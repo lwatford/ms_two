@@ -10,34 +10,14 @@
 		<script language="javascript" type="text/javascript" src="libraries/p5.dom.js"></script>
 
 		<script src="/socket.io/socket.io.js"></script>
+		<!-- /* ALL SOCKET CODE MOVED TO sketch.js */ -->
 
-		<script>
-		  var socket = io.connect('http://localhost:8080');
-		  socket.on('newLine', function (data) {   //keeps saying data is not defined
-		    console.log(data);
-		    socket.emit('my other event', { my: 'data' });
-		  });
-
-		  new = io.connect('http://localhost:8080');
-		  socket.on('newDrawing', function (data) {   //keeps saying data is not defined
-		    console.log(data);
-		   	socket.emit('newDrawing', { my: 'data' });
-		  });
-
-		  // make an onclick in here 
-		  // on click socket.emit
-
-		</script>
-<!-- 	<script language="javascript" type="text/javascript" src="path/to/p5.sound.js"></script>
- --><script language="javascript" type="text/javascript" src="sketch.js"></script>
-	<script type="text/javascript" src="jquery-min.js"></script>
-	<style> body {padding: 0; margin: 0;} </style>
+		<!-- 	<script language="javascript" type="text/javascript" src="path/to/p5.sound.js"></script>-->
+		<script language="javascript" type="text/javascript" src="sketch.js"></script>
+		<script type="text/javascript" src="jquery-min.js"></script>
+		<style> body {padding: 0; margin: 0;} </style>
 	</head>
-
-
 	<body>
-<!-- 		<p> adoptabase</p>
- -->
-
+		<!--<p> adoptabase</p>-->
 	</body>
 </html>
