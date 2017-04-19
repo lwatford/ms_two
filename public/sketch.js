@@ -12,11 +12,21 @@ function setup() {
   background(51);
   // colorMode(RGB,255,255,255,1);
 
-  socket = io.connect('http://localhost:8080'); // can also have 127.0.0.1 instead of localhost
-  socket.on('mouse', newDrawing);
-
   direction = 0;
   frameRate(100);
+
+  /*** SOCKET SETUP ***/
+  socket = io.connect('http://localhost:8080'); // can also have 127.0.0.1 instead of localhost
+
+  socket.on('newLine', function (data) {   //sever sent newLine data
+    console.log('GOT A NEWLINE: ',data);
+    //do something
+  });
+
+  socket.on('newDrawing', function (data) {   //sever sent newDrawing data
+    console.log('GOT A NEWDRAWING: ',data);
+    //do something
+  });
 }
 
 function newDrawing(data) {
@@ -27,20 +37,25 @@ function newDrawing(data) {
 }
 
 function mouseDragged() {
-  console.log('Sending:' + mouseX + ', ' + mouseY);
+  console.log('mouseDragged: ' + mouseX + ', ' + mouseY);
 
   var data = {
     x: mouseX,
     y: mouseY
   }
 
-  socket.emit('mouse', data);
+  socket.emit('mouseDragged', data);
 
   noStroke();
   fill(255);
   ellipse(mouseX, mouseY, 36, 36);
-  
+
 }
+
+function mouseMoved(){
+  //console.log('mouseMoved: ', mouseX, ',', mouseY);
+}
+
 
 function draw() {
   noStroke();
